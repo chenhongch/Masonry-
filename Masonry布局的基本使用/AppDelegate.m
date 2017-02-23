@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import "ViewController.h"
+#import "CHViewController2.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +18,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    ViewController * vc1 = [[ViewController alloc] init];
+    CHViewController2 * vc2 = [[CHViewController2 alloc] init];
+    vc2.title = @"朋友圈";
+    ViewController * vc3 = [[ViewController alloc] init];
+    ViewController * vc4 = [[ViewController alloc] init];
+    
+    UINavigationController * navi1 = [[UINavigationController alloc] initWithRootViewController:vc1];
+    UINavigationController * navi2 = [[UINavigationController alloc] initWithRootViewController:vc2];
+    UINavigationController * navi3 = [[UINavigationController alloc] initWithRootViewController:vc3];
+    UINavigationController * navi4 = [[UINavigationController alloc] initWithRootViewController:vc4];
+    
+    
+    self.tabbar = [[CHTaBarViewController alloc] init];
+    
+    self.tabbar.viewControllers = @[navi1,navi2,navi3,navi4];
+    
+    self.window.rootViewController = self.tabbar;
+    
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
